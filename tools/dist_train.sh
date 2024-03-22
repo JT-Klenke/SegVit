@@ -5,5 +5,6 @@ WORK_DIR=$2
 PORT=${PORT:-29500}
 
 PYTHONPATH="$(dirname $0)/..":$PYTHONPATH \
-python -m torch.distributed.launch --nproc_per_node=4 --master_port=$((RANDOM + 10000)) \
-    $(dirname "$0")/train.py $CONFIG --work-dir $WORK_DIR --launcher pytorch ${@:3}
+# python -m torch.distributed.launch --nproc_per_node=1 --master_port=$((RANDOM + 10000)) \
+#     $(dirname "$0")/train.py $CONFIG --work-dir $WORK_DIR --launcher pytorch ${@:3}
+python $(dirname "$0")/train.py $CONFIG --work-dir $WORK_DIR --launcher pytorch ${@:3}

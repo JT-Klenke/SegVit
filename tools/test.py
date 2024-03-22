@@ -16,9 +16,12 @@ from mmcv.utils import DictAction
 
 from mmseg import digit_version
 from mmseg.apis import multi_gpu_test, single_gpu_test
+from mmseg.apis import single_gpu_test
 from mmseg.datasets import build_dataloader, build_dataset
 from mmseg.models import build_segmentor
 from mmseg.utils import setup_multi_processes
+import sys
+sys.path.append("../") # if this doesn't work change to ../ and run from tools
 from decode_heads import atm_head, tpn_atm_head
 from backbone import vit_shrink
 from losses import atm_loss
@@ -27,8 +30,8 @@ from losses import atm_loss
 def parse_args():
     parser = argparse.ArgumentParser(
         description='mmseg test (and eval) a model')
-    parser.add_argument('config', help='test config file path')
-    parser.add_argument('checkpoint', help='checkpoint file')
+    parser.add_argument('--config', help='test config file path')
+    parser.add_argument('--checkpoint', help='checkpoint file')
     parser.add_argument(
         '--work-dir',
         help=('if specified, the evaluation metric results will be dumped'

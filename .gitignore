@@ -2,3 +2,5 @@
 data/
 pretrained/
 work_dirs/
+paintedImages2/
+checkpoints/
